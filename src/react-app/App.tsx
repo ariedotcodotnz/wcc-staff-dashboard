@@ -34,7 +34,7 @@ const WCCStaffDashboard = () => {
   const [drillDownPath, setDrillDownPath] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [crossFilterActive, setCrossFilterActive] = useState(true);
-  const [dataTableSort, setDataTableSort] = useState({ column: 'StaffCount', direction: 'desc' });
+  const [dataTableSort, setDataTableSort] = useState<{ column: string; direction: 'asc' | 'desc' }>({ column: 'StaffCount', direction: 'desc' });
   const [dataTablePage, setDataTablePage] = useState(0);
   const [expandedGroups, setExpandedGroups] = useState({});
 
@@ -594,7 +594,7 @@ const WCCStaffDashboard = () => {
   };
 
   // Interactive components
-  const MetricCard = ({ icon: Icon, title, value, subtitle, trend, onClick, isSelected }) => (
+  const MetricCard = ({ icon: Icon, title, value, subtitle, trend = null, onClick, isSelected = false }) => (
       <div
           onClick={onClick}
           className={`
@@ -872,7 +872,7 @@ const WCCStaffDashboard = () => {
               </tr>
               </thead>
               <tbody className="bg-gray-800 divide-y divide-gray-700">
-              {paginatedData.map((row, idx) => (
+              {paginatedData.map((row: any, idx) => (
                   <tr key={idx} className="hover:bg-gray-700">
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{row.GroupName}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">{row.UnitName}</td>
