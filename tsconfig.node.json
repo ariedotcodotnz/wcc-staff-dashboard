@@ -1,24 +1,23 @@
 {
   "compilerOptions": {
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    // This setting is required for project references.
+    "composite": true,
+
+    // Keep these settings for a modern Node.js environment
     "target": "ES2022",
-    "lib": ["ES2023"],
     "module": "ESNext",
+    "moduleResolution": "bundler",
     "skipLibCheck": true,
 
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "isolatedModules": true,
-    "moduleDetection": "force",
-    "noEmit": true,
-
-    /* Linting */
+    // This is the fix for error TS6310. We REMOVE "noEmit": true.
+    // The other linting rules are good to keep.
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+
+    // It's also good practice to allow this in a node config
+    "allowSyntheticDefaultImports": true
   },
   "include": ["vite.config.ts"]
 }
