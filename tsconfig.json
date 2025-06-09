@@ -1,9 +1,15 @@
 {
   "compilerOptions": {
-    // …existing options…
-    "jsx": "react-jsx",             // for React 17+ automatic JSX runtime
-    "skipLibCheck": true,           // skip third-party type checks
-    "noUnusedLocals": false,        // allow imports you haven’t yet wired up
-    "noImplicitAny": false          // temporarily allow parameters without explicit types
+    // enable default-import from CommonJS modules
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    // use the new JSX transform (no need to import React)
+    "jsx": "react-jsx",
+
+    // keep these from our earlier tweaks
+    "skipLibCheck": true,
+    "noUnusedLocals": false,
+    "noImplicitAny": false
   }
 }
